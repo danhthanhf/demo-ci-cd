@@ -2,13 +2,14 @@ package me.danhthanhf.distant_class.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
 @Entity
 @Getter
 @Setter
-@Builder
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "users")
@@ -29,8 +30,10 @@ public class User extends BaseEntity{
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable
             (name = "user_roles", joinColumns = {
-                    @JoinColumn(name = "user_id", referencedColumnName = "id"),
+                    @JoinColumn(name = "user_id", referencedColumnName = "id")},
+                    inverseJoinColumns = {
                     @JoinColumn(name = "role_id", referencedColumnName = "id")
-            })
+                    }
+            )
     private List<Role> roles;
 }

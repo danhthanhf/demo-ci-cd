@@ -8,6 +8,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("${api.base.path}/auth")
 public class AuthController {
 
-    @PostMapping("/register")
-    public
 }

@@ -13,7 +13,6 @@ public class ApiResponse <T>{
     private boolean success;
     private Object errors; // contains error details ex: validation errors, etc.
 
-
     public static <T> ApiResponse<T> success(String message, T data) {
        ApiResponse<T> res = new ApiResponse<>();
        res.setSuccess(true);
