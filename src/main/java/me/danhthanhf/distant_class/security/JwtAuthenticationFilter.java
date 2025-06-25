@@ -12,21 +12,18 @@ import me.danhthanhf.distant_class.common.constant.AppConstants;
 import me.danhthanhf.distant_class.common.constant.ErrorConstants;
 import me.danhthanhf.distant_class.common.response.ApiResponseWriter;
 import me.danhthanhf.distant_class.common.util.JwtUtil;
-import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
 @RequiredArgsConstructor
-@Component
+//@Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final JwtUtil jwtUtil;
     private final ApiResponseWriter responseWriter;
-    private final EnableSpringDataWebSupport.SpringDataWebConfigurationImportSelector springDataWebConfigurationImportSelector;
 
     private boolean checkIfUrlInWhiteList(String url) {
         return AppConstants.WHITE_LIST_API.stream().anyMatch(url::startsWith);
