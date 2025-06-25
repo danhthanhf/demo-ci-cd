@@ -22,7 +22,7 @@ services:
             - JAVA_OPTS=-Djenkins.install.runSetupWizard=false #disable first setup, if wanting to use jenkins without setup wizard
     spring-boot-demo:
         build:
-            context: ./distant-class
+            context: .
             dockerfile: Dockerfile
         volumes:
             - ./spring-artifacts:/ap/jar
