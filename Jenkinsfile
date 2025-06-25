@@ -2,13 +2,13 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven_3.9'  // Tên Maven bạn sẽ khai báo trong Jenkins
+        maven 'Maven_3.9' // Đảm bảo bạn đã add tool name "Maven_3.9" trong Jenkins global config
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/danhthanhf/demo-ci-cd'
+                git branch: 'main', url: 'https://github.com/danhthanhf/demo-ci-cd.git'
             }
         }
 
@@ -29,11 +29,13 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
+
         stage('Run Demo') {
             steps {
                 sh 'java -jar target/*.jar &'
             }
         }
+
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t my-spring-app .'

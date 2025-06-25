@@ -1,4 +1,4 @@
-FROM esclipse-temurin:17
+FROM eclipse-temurin:17
 COPY target/*.jar app.jar
 LABEL authors="Admin"
 
